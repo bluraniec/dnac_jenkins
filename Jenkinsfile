@@ -40,6 +40,11 @@ pipeline {
                 }
             }
         }
+        stage('Slack message'){
+            steps {
+                slackSend message: "Please find the build status of the pipeline -  ${env.JOB_NAME} ${env.BUILD_NUMBER}(<${env.BUILD_URL}|Open>)"
+            }
+        }
     }
   post {
     cleanup {
